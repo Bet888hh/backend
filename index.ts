@@ -27,7 +27,6 @@ class Server {
   }
 
   config(): void {
-    this.app.set("port", 3000);
     this.app.use(morgan("dev"));
     this.app.use(cors());
     this.app.use((req, res, next) => {
@@ -51,11 +50,9 @@ class Server {
   }
 
   start(): void {
-    this.app.listen(this.app.get("port"), () => {
+    this.app.listen(10000, () => {
       console.log(
-        "server run in ",
-        this.app.get("port") + " ",
-        this.app.get("host")
+        "server run in " 
       );
     });
   }
