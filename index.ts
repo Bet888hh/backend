@@ -19,7 +19,6 @@ import userRoutes from "./routes/userRoutes";
 
 class Server {
   public app: Application;
-  public host: string = "127.0.0.1";
 
   constructor() {
     this.app = express();
@@ -29,7 +28,6 @@ class Server {
 
   config(): void {
     this.app.set("port", 3000);
-    this.app.set("host", this.host);
     this.app.use(morgan("dev"));
     this.app.use(cors());
     this.app.use((req, res, next) => {
@@ -53,7 +51,7 @@ class Server {
   }
 
   start(): void {
-    this.app.listen(this.app.get("port"), this.app.get("host"), () => {
+    this.app.listen(this.app.get("port"), () => {
       console.log(
         "server run in ",
         this.app.get("port") + " ",
